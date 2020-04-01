@@ -1,0 +1,83 @@
+swagger: '2.0'
+info:
+  version: '2.0'
+  title: 'Doctor/Dentist Booking'
+  description: 'This is an API detailing a doctor or dentist booking service'
+paths:
+  /get_oldest_event:
+    get:
+      summary: audits messages for doctor booking
+      operationId: app.get_oldest_event
+      description: . . . Placeholder . . .
+      produces:
+      - application/json
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            $ref: '#/definitions/DoctorAudit'
+        400:
+          description: bad input parameter
+  /get_event:
+    get:
+      summary: audits messages for dentist booking
+      operationId: app.get_event
+      description: . . . Placeholder . . .
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: offset
+        description: pass a search offset for looking up an event
+        required: true
+        type: integer
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            $ref: '#/definitions/DentistAudit'
+        400:
+          description: bad input parameter
+definitions:
+    DentistAudit:
+      type: object
+      required:
+      - first_name
+      - last_name
+      - date
+      - reason
+      properties:
+        first_name:
+          type: string
+          example: Alex
+        last_name:
+          type: string
+          example: Cho
+        date:
+          type: string
+          format: date-time
+          example: 2020-08-29:12:00:00
+        reason:
+          type: string
+          example: I want braces.
+    DoctorAudit:
+      type: object
+      required:
+      - first_name
+      - last_name
+      - date
+      - reason
+      properties:
+        first_name:
+          type: string
+          example: Alex
+        last_name:
+          type: string
+          example: Cho
+        date:
+          type: string
+          format: date-time
+          example: 2020-08-29:12:00:00
+        reason:
+          type: string
+          example: I am have some back problems.
